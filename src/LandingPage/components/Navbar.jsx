@@ -31,57 +31,41 @@ export default function Navbar() {
 
   return (
     <header 
-      className={`w-full fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out ${
+      className={`w-full fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out nav-horror ${
         isVisible ? 'translate-y-0' : '-translate-y-full'
-      } ${
-        isScrolled 
-          ? 'h-14 bg-black/90 backdrop-blur-lg shadow-2xl border-b border-white/10' 
-          : 'h-16 bg-black border-b border-white/5'
-      }`}
+      } ${isScrolled ? 'h-14 backdrop-blur-lg shadow-2xl' : 'h-16'}`}
     >
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 h-full flex items-center justify-between">
-        <a 
-          href="/" 
-          className={`font-bold tracking-tight text-white transition-all duration-300 hover:text-gray-300 ${
-            isScrolled ? 'text-base' : 'text-lg'
-          }`}
-        >
-          The Alchemyst Eye
-        </a>
+        <div />
         
         {/* Desktop Navigation */}
         <nav className={`hidden md:flex items-center transition-all duration-300 ${
           isScrolled ? 'gap-6 text-sm' : 'gap-8 text-sm'
         }`}>
           <a 
-            className="text-gray-300 hover:text-white transition-colors duration-200 font-medium" 
+            className="nav-link nav-link-blood font-medium" 
             href="#features"
           >
             Features
           </a>
+
           <a 
-            className="text-gray-300 hover:text-white transition-colors duration-200 font-medium" 
-            href="#testimonials"
-          >
-            Testimonials
-          </a>
-          <a 
-            className="text-gray-300 hover:text-white transition-colors duration-200 font-medium" 
+            className="nav-link nav-link-blood font-medium" 
             href="#contact"
           >
             Contact
           </a>
           
-          <div className="w-px h-6 bg-white/20"></div>
+          <div className="w-px h-6 bg-white/15"></div>
           
           <a 
-            className="text-gray-300 hover:text-white transition-colors duration-200 font-medium" 
+            className="nav-link nav-link-blood font-medium" 
             href="#swot"
           >
             Swot
           </a>
           <a 
-            className="text-gray-300 hover:text-white transition-colors duration-200 font-medium" 
+            className="nav-link nav-link-blood font-medium" 
             href="#developer"
           >
             Developer
@@ -108,27 +92,27 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       <div
-        className={`md:hidden absolute top-full left-0 right-0 bg-black/95 backdrop-blur-xl border-b border-white/10 transition-all duration-300 overflow-hidden ${
+        className={`md:hidden absolute top-full left-0 right-0 nav-horror backdrop-blur-xl border-b border-white/10 transition-all duration-300 overflow-hidden ${
           isMobileMenuOpen ? 'max-h-[32rem] opacity-100' : 'max-h-0 opacity-0'
         }`}
       >
         <nav className="flex flex-col px-6 py-6 gap-1">
           <a 
-            className="text-gray-300 hover:text-white hover:bg-white/5 py-3 px-4 rounded-lg transition-all duration-200 font-medium" 
+            className="nav-link py-3 px-4 rounded-lg transition-all duration-200 font-medium hover:bg-white/5" 
             href="#features"
             onClick={() => setIsMobileMenuOpen(false)}
           >
             Features
           </a>
           <a 
-            className="text-gray-300 hover:text-white hover:bg-white/5 py-3 px-4 rounded-lg transition-all duration-200 font-medium" 
+            className="nav-link py-3 px-4 rounded-lg transition-all duration-200 font-medium hover:bg-white/5" 
             href="#testimonials"
             onClick={() => setIsMobileMenuOpen(false)}
           >
             Testimonials
           </a>
           <a 
-            className="text-gray-300 hover:text-white hover:bg-white/5 py-3 px-4 rounded-lg transition-all duration-200 font-medium" 
+            className="nav-link py-3 px-4 rounded-lg transition-all duration-200 font-medium hover:bg-white/5" 
             href="#contact"
             onClick={() => setIsMobileMenuOpen(false)}
           >
@@ -138,14 +122,14 @@ export default function Navbar() {
           <div className="h-px bg-white/10 my-3"></div>
           
           <a 
-            className="text-gray-300 hover:text-white hover:bg-white/5 py-3 px-4 rounded-lg transition-all duration-200 font-medium" 
+            className="nav-link py-3 px-4 rounded-lg transition-all duration-200 font-medium hover:bg-white/5" 
             href="#swot"
             onClick={() => setIsMobileMenuOpen(false)}
           >
             Swot
           </a>
           <a 
-            className="text-gray-300 hover:text-white hover:bg-white/5 py-3 px-4 rounded-lg transition-all duration-200 font-medium" 
+            className="nav-link py-3 px-4 rounded-lg transition-all duration-200 font-medium hover:bg-white/5" 
             href="#developer"
             onClick={() => setIsMobileMenuOpen(false)}
           >
