@@ -29,8 +29,6 @@ body {
 /* 🌑 HORROR BASE EFFECT */
 /* ===================== */
 
-=======
->>>>>>> 9ed283c09c1ef804c4526260d00af8ef992a897c
 .intro-bg {
   background:
     radial-gradient(circle at 50% 60%, rgba(120,0,0,0.25), transparent 60%),
@@ -39,6 +37,7 @@ body {
     linear-gradient(180deg, #050101 0%, #0a0000 40%, #120000 100%);
 }
 
+/* subtle grid background for main layout */
 .app-grid-bg {
   position: relative;
 }
@@ -88,7 +87,6 @@ body {
   font-size: clamp(44px, 8vw, 120px);
 }
 
-<<<<<<< HEAD
 /* ===================== */
 /* ✨ ANIMASI GLOBAL TAMBAHAN */
 /* ===================== */
@@ -190,13 +188,11 @@ button:hover, a:hover {
   transform: translate(-1px, 0);
 }
 
-<<<<<<< HEAD
 /* ... semua efek horror lanjutan kamu tetap di sini tanpa dihapus ... */
 
 /* ===================== */
 /* 🔁 KEYFRAMES TAMBAHAN */
 /* ===================== */
-=======
 .intro-scanline {
   background: linear-gradient(to top, rgba(255,0,0,0.1), transparent);
   animation: introScan 4s linear infinite;
@@ -374,7 +370,6 @@ button:hover, a:hover {
   100% { background-position: 100% 100%; }
 }
 
-<<<<<<< HEAD
 @keyframes introFlicker {
   0%, 19%, 21%, 23%, 100% { opacity: 1; }
   20%, 22% { opacity: 0.4; }
@@ -388,7 +383,6 @@ button:hover, a:hover {
   80% { transform: translate(-1px, -1px); }
   100% { transform: translate(0, 0); }
 }
-=======
 @keyframes introFade {
   0% { opacity: 0; }
   10% { opacity: 1; }
