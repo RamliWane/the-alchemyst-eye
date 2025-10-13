@@ -8,7 +8,7 @@ export default function Navbar() {
           <a className="opacity-80 hover:opacity-100" href="#testimonials">Testimonials</a>
           <a className="opacity-80 hover:opacity-100" href="#contact">Contact</a>
         </nav>
-      </div>
+      </div>  
     </header>
   );
 }

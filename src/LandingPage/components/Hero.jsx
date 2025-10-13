@@ -14,7 +14,7 @@ export default function Hero() {
             Learn More
           </a>
         </div>
-      </div>
+      </div>  
     </section>
   );
 }
