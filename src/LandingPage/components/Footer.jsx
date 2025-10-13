@@ -21,9 +21,6 @@ export default function Footer() {
         <a href="#features" className="text-gray-400 hover:text-red-400 transition-colors duration-300">
           Features
         </a>
-        <a href="#testimonials" className="text-gray-400 hover:text-red-400 transition-colors duration-300">
-          Testimonials
-        </a>
         <a href="#contact" className="text-gray-400 hover:text-red-400 transition-colors duration-300">
           Contact
         </a>
