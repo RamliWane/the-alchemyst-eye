@@ -1,12 +1,14 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useLayoutEffect, useRef } from "react";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
+import gsap from "gsap";
 
 export default function Intro({ duration = 2400, title = "THE ALCHEMYST EYE" }) {
   const [visible, setVisible] = useState(true);
   const prefersReducedMotion = useReducedMotion();
   const [audioReady, setAudioReady] = useState(false);
   const [audioCtx, setAudioCtx] = useState(null);
+  const rootRef = useRef(null);
 
   useEffect(() => {
     const t = setTimeout(() => setVisible(false), duration);
@@ -34,6 +36,27 @@ export default function Intro({ duration = 2400, title = "THE ALCHEMYST EYE" }) 
           transition: { duration: 2.2, repeat: Infinity, ease: "easeInOut" },
         },
       };
+
+  useLayoutEffect(() => {
+    if (!visible || prefersReducedMotion) return;
+    const ctx = gsap.context(() => {
+      const tl = gsap.timeline({ defaults: { ease: "power2.out" } });
+      tl.set([".intro-redflash", ".intro-blood", ".intro-blood-edges", ".intro-blood-streaks", ".intro-scanline"], { opacity: 0 });
+      tl.set(".intro-cta", { y: 0 });
+      tl.fromTo(".intro-redflash", { opacity: 0 }, { opacity: 1, duration: 0.12 })
+        .to(".intro-redflash", { opacity: 0, duration: 0.5 }, ">-0.02");
+      tl.to(".intro-title", { scale: 1.04, filter: "drop-shadow(0 0 18px rgba(255,0,0,0.6))", duration: 0.6 }, 0.05)
+        .to(".intro-title", { scale: 1, duration: 0.4 }, ">");
+      tl.to(".intro-title", { skewX: 2, duration: 0.05, repeat: 6, yoyo: true, ease: "power1.inOut" }, 0.12);
+      tl.to([".intro-fog--a", ".intro-fog--b"], { opacity: (i) => (i === 0 ? 0.28 : 0.2), duration: 0.8 }, 0);
+      tl.to([".intro-blood", ".intro-blood-edges", ".intro-blood-streaks"], { opacity: (i) => [0.45, 0.35, 0.22][i], duration: 0.9 }, 0.15);
+      tl.to(".intro-scanline", { opacity: 0.6, duration: 0.4 }, 0.2)
+        .to(".intro-scanline", { opacity: 0.25, duration: 1.2 }, "<");
+      tl.to(".intro-cta", { opacity: 0.35, duration: 0.06, repeat: 8, yoyo: true, ease: "steps(2)" }, 0.22);
+      tl.to(".intro-shake-target", { x: 1, y: -1, rotation: 0.2, duration: 0.06, repeat: 7, yoyo: true, ease: "sine.inOut" }, 0.1);
+    }, rootRef);
+    return () => ctx.revert();
+  }, [visible, prefersReducedMotion]);
 
   const fogAnimA = prefersReducedMotion
     ? {}
@@ -163,6 +186,7 @@ export default function Intro({ duration = 2400, title = "THE ALCHEMYST EYE" }) 
     <AnimatePresence>
       {visible && (
         <motion.div
+          ref={rootRef}
           className="fixed inset-0 z-[9999] intro-bg text-white overflow-hidden select-none intro-shake"
           variants={overlayVariants}
           initial="hidden"
@@ -173,20 +197,16 @@ export default function Intro({ duration = 2400, title = "THE ALCHEMYST EYE" }) 
           <div className="absolute inset-0 pointer-events-none intro-noise" aria-hidden />
           <div className="absolute inset-0 pointer-events-none intro-vignette" aria-hidden />
 
-          {/* drifting fog layers */}
-          <motion.div className="absolute inset-0 intro-fog intro-fog--a" aria-hidden {...fogAnimA} />
-          <motion.div className="absolute inset-0 intro-fog intro-fog--b" aria-hidden {...fogAnimB} />
-
-          {/* ember particles */}
-          <div className="absolute inset-0 intro-embers" aria-hidden />
-
-          {/* blood overlay */}
-          <div className="absolute inset-0 intro-blood" aria-hidden />
-          <div className="absolute inset-0 intro-blood-edges" aria-hidden />
-          <div className="absolute inset-0 intro-blood-streaks" aria-hidden />
-
-          {/* blood-red flash at start */}
-          <div className="absolute inset-0 intro-redflash" aria-hidden />
+          {/* background/effect layers */}
+          <div className="intro-layers intro-shake-target">
+            <motion.div className="absolute inset-0 intro-fog intro-fog--a" aria-hidden {...fogAnimA} />
+            <motion.div className="absolute inset-0 intro-fog intro-fog--b" aria-hidden {...fogAnimB} />
+            <div className="absolute inset-0 intro-embers" aria-hidden />
+            <div className="absolute inset-0 intro-blood" aria-hidden />
+            <div className="absolute inset-0 intro-blood-edges" aria-hidden />
+            <div className="absolute inset-0 intro-blood-streaks" aria-hidden />
+            <div className="absolute inset-0 intro-redflash" aria-hidden />
+          </div>
 
           <div className="intro-container">
             <motion.div className="text-center" initial={{ opacity: 0, scale: 0.98 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.5 }}>
@@ -196,13 +216,7 @@ export default function Intro({ duration = 2400, title = "THE ALCHEMYST EYE" }) 
               >
                 {title}
               </motion.h1>
-              <motion.p
-                className="mt-4 text-red-500/80 text-xs sm:text-sm md:text-base tracking-widest intro-glitch"
-                initial={{ opacity: 0, y: 8 }}
-                animate={{ opacity: 1, y: 0, transition: { delay: 0.25, duration: 0.4 } }}
-              >
-                PRESS START
-              </motion.p>
+              
             </motion.div>
           </div>
 

@@ -29,6 +29,8 @@ body {
 /* 🌑 HORROR BASE EFFECT */
 /* ===================== */
 
+=======
+>>>>>>> 9ed283c09c1ef804c4526260d00af8ef992a897c
 .intro-bg {
   background:
     radial-gradient(circle at 50% 60%, rgba(120,0,0,0.25), transparent 60%),
@@ -52,6 +54,7 @@ body {
   pointer-events: none;
 }
 
+/* 3D eye container sizing (better on desktop) */
 .intro-eye3d {
   width: min(72vw, 720px);
   height: min(44vw, 420px);
@@ -60,6 +63,7 @@ body {
   box-shadow: 0 10px 30px rgba(0,0,0,0.45), 0 0 60px rgba(120,0,0,0.25);
   overflow: hidden;
 }
+
 @media (min-width: 1024px) {
   .intro-eye3d {
     width: min(60vw, 860px);
@@ -68,6 +72,7 @@ body {
   }
 }
 
+/* center stack and prevent clipping on wide screens */
 .intro-container {
   position: relative;
   height: 100%;
@@ -78,10 +83,12 @@ body {
   padding: 5vh 4vw 10vh;
 }
 
+/* responsive title sizing tuned for desktop */
 .intro-title-size {
   font-size: clamp(44px, 8vw, 120px);
 }
 
+<<<<<<< HEAD
 /* ===================== */
 /* ✨ ANIMASI GLOBAL TAMBAHAN */
 /* ===================== */
@@ -152,6 +159,7 @@ button:hover, a:hover {
 /* ===================== */
 
 /* noise, vignette, flicker, glitch, scanline, fadeout, fog, blood, ember dll */
+/* Intro overlay effects */
 .intro-noise {
   background-image: radial-gradient(rgba(255,255,255,0.02) 1px, transparent 1px);
   background-size: 3px 3px;
@@ -182,16 +190,191 @@ button:hover, a:hover {
   transform: translate(-1px, 0);
 }
 
+<<<<<<< HEAD
 /* ... semua efek horror lanjutan kamu tetap di sini tanpa dihapus ... */
 
 /* ===================== */
 /* 🔁 KEYFRAMES TAMBAHAN */
 /* ===================== */
+=======
+.intro-scanline {
+  background: linear-gradient(to top, rgba(255,0,0,0.1), transparent);
+  animation: introScan 4s linear infinite;
+}
+
+.intro-fadeout {
+  animation: introFade 2.4s ease-out forwards;
+}
+
+/* drifting fog */
+.intro-fog {
+  background: radial-gradient(ellipse at 50% 50%, rgba(255,255,255,0.06), transparent 60%);
+  filter: blur(12px);
+  opacity: 0.18;
+  mix-blend-mode: screen;
+}
+.intro-fog--a { animation: introFogA 16s ease-in-out infinite; }
+.intro-fog--b { animation: introFogB 20s ease-in-out infinite; opacity: 0.12; }
+
+/* red flash at start */
+.intro-redflash {
+  background: radial-gradient(circle at 50% 50%, rgba(255,0,0,0.2), transparent 60%);
+  animation: introFlash 900ms ease-out forwards;
+  pointer-events: none;
+}
+
+/* subtle camera shake */
+.intro-shake {
+  animation: introShake 2.2s cubic-bezier(.36,.07,.19,.97) both;
+}
+
+/* chromatic aberration for title */
+.intro-chroma {
+  text-shadow:
+    -1px 0 0 rgba(255,0,0,0.5),
+     1px 0 0 rgba(0,200,255,0.5),
+     0 0 24px rgba(255,255,255,0.2);
+  animation: introChroma 2.4s ease-in-out infinite;
+}
+
+/* horror display font for title */
+.intro-title {
+  font-family: var(--font-horror), var(--font-geist-sans), Arial, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: #f5f5f5;
+  -webkit-text-stroke: 1px rgba(0,0,0,0.5);
+  text-shadow:
+    0 2px 0 rgba(0,0,0,0.6),
+    0 8px 18px rgba(255,0,0,0.15);
+}
+
+/* ember particles */
+.intro-embers {
+  background-image:
+    radial-gradient(rgba(255,80,80,0.35) 1px, transparent 1px),
+    radial-gradient(rgba(255,120,120,0.25) 1px, transparent 1px);
+  background-size: 3px 3px, 2px 2px;
+  background-position: 0 0, 10px 10px;
+  animation: introEmbersRise 8s linear infinite, introEmbersTwinkle 2.4s ease-in-out infinite;
+  mix-blend-mode: screen;
+  opacity: 0.28;
+  pointer-events: none;
+}
+
+.intro-blood {
+  background:
+    linear-gradient(to bottom, rgba(120,0,0,0.6), rgba(80,0,0,0.0) 35%),
+    repeating-linear-gradient(
+      to bottom,
+      rgba(180,0,0,0.15) 0px,
+      rgba(180,0,0,0.15) 2px,
+      rgba(120,0,0,0.05) 3px,
+      rgba(120,0,0,0.05) 6px
+    );
+  mix-blend-mode: multiply;
+  animation: introDrip 6s linear infinite;
+  opacity: 0.35;
+}
+
+.intro-blood-edges {
+  background:
+    radial-gradient(120% 60% at -10% -10%, rgba(120,0,0,0.45), transparent 60%),
+    radial-gradient(120% 60% at 110% -10%, rgba(120,0,0,0.45), transparent 60%),
+    radial-gradient(100% 50% at 50% 110%, rgba(90,0,0,0.35), transparent 60%);
+  mix-blend-mode: multiply;
+  animation: introDrip 10s linear infinite;
+  opacity: 0.28;
+}
+
+/* thin blood streaks across screen */
+.intro-blood-streaks {
+  background-image:
+    repeating-linear-gradient(
+      120deg,
+      rgba(120,0,0,0.10) 0px,
+      rgba(120,0,0,0.10) 2px,
+      transparent 3px,
+      transparent 10px
+    ),
+    repeating-linear-gradient(
+      60deg,
+      rgba(80,0,0,0.08) 0px,
+      rgba(80,0,0,0.08) 2px,
+      transparent 4px,
+      transparent 12px
+    );
+  opacity: 0.22;
+  mix-blend-mode: multiply;
+  animation: introStreakShift 12s linear infinite;
+  pointer-events: none;
+}
+
+/* layer to hold small watcher eyes above fog/blood */
+.intro-eyes { z-index: 30; }
+
+.intro-eye {
+  position: relative;
+  width: min(28vw, 220px);
+  height: min(16vw, 120px);
+  margin: 0 auto 0.75rem;
+}
+.intro-eye-iris {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 70%;
+  height: 70%;
+  background: radial-gradient(circle at 50% 50%, #7a0000 0%, #230000 70%);
+  border-radius: 50%;
+  box-shadow: 0 0 30px rgba(255,0,0,0.25), inset 0 0 20px rgba(0,0,0,0.8);
+  animation: introIrisPulse 3.2s ease-in-out infinite;
+}
+.intro-eye-pupil {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 24%;
+  height: 24%;
+  background: radial-gradient(circle at 50% 50%, #000 40%, #200 100%);
+  border-radius: 50%;
+}
+.intro-eye-lid {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(#000, #150000 40%, #000);
+  transform-origin: center;
+  animation: introBlink 5.2s ease-in-out infinite;
+  opacity: 0.9;
+}
+
+.intro-sigil {
+  position: relative;
+  width: min(44vw, 320px);
+  height: min(44vw, 320px);
+  margin: 0 auto 1.5rem;
+  background:
+    radial-gradient(circle at 50% 50%, rgba(255,0,0,0.08), transparent 60%),
+    conic-gradient(from 0deg, transparent 0 10%, rgba(255,0,0,0.25) 10% 12%, transparent 12% 22%, rgba(255,0,0,0.25) 22% 24%, transparent 24% 34%, rgba(255,0,0,0.25) 34% 36%, transparent 36% 46%, rgba(255,0,0,0.25) 46% 48%, transparent 48% 58%, rgba(255,0,0,0.25) 58% 60%, transparent 60% 70%, rgba(255,0,0,0.25) 70% 72%, transparent 72% 82%, rgba(255,0,0,0.25) 82% 84%, transparent 84% 94%, rgba(255,0,0,0.25) 94% 96%, transparent 96% 100%);
+  border-radius: 50%;
+  box-shadow: 0 0 30px rgba(255,0,0,0.12), inset 0 0 30px rgba(255,0,0,0.12);
+  animation: introHeartbeat 2.8s ease-in-out infinite;
+}
+
+@keyframes introHeartbeat {
+  0% { transform: scale(1); box-shadow: 0 0 20px rgba(255,0,0,0.1), inset 0 0 20px rgba(255,0,0,0.1); opacity: 0.75; }
+  25% { transform: scale(1.02); box-shadow: 0 0 28px rgba(255,0,0,0.16), inset 0 0 26px rgba(255,0,0,0.16); opacity: 0.9; }
+  40% { transform: scale(1); opacity: 0.8; }
+  60% { transform: scale(1.03); box-shadow: 0 0 32px rgba(255,0,0,0.18), inset 0 0 28px rgba(255,0,0,0.18); opacity: 0.95; }
+  100% { transform: scale(1); opacity: 0.8; }
+}
+
 @keyframes introNoise {
   0% { background-position: 0 0; }
   100% { background-position: 100% 100%; }
 }
 
+<<<<<<< HEAD
 @keyframes introFlicker {
   0%, 19%, 21%, 23%, 100% { opacity: 1; }
   20%, 22% { opacity: 0.4; }
@@ -204,4 +387,174 @@ button:hover, a:hover {
   60% { transform: translate(1px, 1px); }
   80% { transform: translate(-1px, -1px); }
   100% { transform: translate(0, 0); }
+}
+=======
+@keyframes introFade {
+  0% { opacity: 0; }
+  10% { opacity: 1; }
+  80% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+@keyframes introFogA {
+  0% { transform: translate3d(-10%, 0, 0) scale(1.1); }
+  50% { transform: translate3d(10%, 2%, 0) scale(1.15); }
+  100% { transform: translate3d(-10%, 0, 0) scale(1.1); }
+}
+
+@keyframes introFogB {
+  0% { transform: translate3d(8%, -2%, 0) scale(1.05); }
+  50% { transform: translate3d(-8%, 4%, 0) scale(1.1); }
+  100% { transform: translate3d(8%, -2%, 0) scale(1.05); }
+}
+
+@keyframes introFlash {
+  0% { opacity: 0; }
+  10% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+@keyframes introShake {
+  0% { transform: translate3d(0,0,0) }
+  10% { transform: translate3d(1px,-1px,0) rotate(0.2deg) }
+  20% { transform: translate3d(-1px,1px,0) rotate(-0.2deg) }
+  30% { transform: translate3d(1px,1px,0) }
+  40% { transform: translate3d(-1px,-1px,0) }
+  50% { transform: translate3d(1px,0,0) }
+  60% { transform: translate3d(-1px,0,0) }
+  70% { transform: translate3d(0,1px,0) }
+  80% { transform: translate3d(0,-1px,0) }
+  90% { transform: translate3d(0.5px,0.5px,0) }
+  100% { transform: translate3d(0,0,0) }
+}
+
+@keyframes introChroma {
+  0%, 100% { text-shadow: -1px 0 0 rgba(255,0,0,0.5), 1px 0 0 rgba(0,200,255,0.5), 0 0 24px rgba(255,255,255,0.2); }
+  50% { text-shadow: -2px 0 0 rgba(255,0,0,0.6), 2px 0 0 rgba(0,200,255,0.6), 0 0 36px rgba(255,255,255,0.25); }
+}
+
+/* accessibility: reduce motion */
+@media (prefers-reduced-motion: reduce) {
+  .intro-flicker,
+  .intro-glitch::before,
+  .intro-glitch::after,
+  .intro-scanline,
+  .intro-fadeout,
+  .intro-fog--a,
+  .intro-fog--b,
+  .intro-redflash,
+  .intro-shake,
+  .intro-chroma,
+  .intro-embers,
+  .intro-blood,
+  .intro-blood-streaks,
+  .intro-eye-iris,
+  .intro-eye-lid {
+    animation: none !important;
+  }
+}
+
+/* small screens: tone down heavy effects for clarity */
+@media (max-width: 640px) {
+  .intro-fog { opacity: 0.12; filter: blur(10px); }
+  .intro-scanline { opacity: 0.5; }
+  .intro-shake { animation-duration: 1.6s; }
+}
+
+@media (min-width: 1024px) {
+  .intro-eye-small { width: 56px; height: 56px; }
+}
+
+/* small watcher eyes */
+.intro-eye-small {
+  width: 48px;
+  height: 48px;
+  position: relative;
+  filter: drop-shadow(0 0 10px rgba(255,0,0,0.25)) drop-shadow(0 0 18px rgba(120,0,0,0.2));
+}
+.intro-eye-iris-small {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 50% 55%, #7a0000 0%, #3a0000 45%, #140000 78%),
+    radial-gradient(circle at 50% 50%, rgba(255,80,80,0.12), transparent 60%);
+  box-shadow:
+    inset 0 0 10px rgba(0,0,0,0.85),
+    0 0 10px rgba(255,0,0,0.35);
+  animation: introIrisPulse 4.2s ease-in-out infinite;
+}
+.intro-eye-sclera {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: radial-gradient(circle at 50% 45%, #fafafa 0%, #e5dada 60%, #caa 100%);
+  box-shadow: 0 0 10px rgba(255,255,255,0.35), 0 0 18px rgba(255,0,0,0.28);
+  filter: drop-shadow(0 0 10px rgba(255,0,0,0.35));
+}
+.intro-eye-pupil-small {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 28%;
+  height: 28%;
+  border-radius: 50%;
+  background: radial-gradient(circle at 50% 55%, #000 50%, #200 100%);
+  box-shadow: inset 0 -2px 2px rgba(255,255,255,0.06);
+}
+.intro-eye-lid-small {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(#000, #150000 40%, #000);
+  opacity: 0.6;
+  animation: introBlink 6.4s ease-in-out infinite;
+}
+
+.intro-eye-highlight {
+  position: absolute;
+  top: 18%;
+  left: 62%;
+  width: 16%;
+  height: 16%;
+  border-radius: 50%;
+  background: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.9), rgba(255,255,255,0.2));
+  filter: blur(0.3px);
+}
+
+/* extra keyframes for new effects */
+@keyframes introEmbersRise {
+  0% { background-position: 0 0, 10px 10px; }
+  100% { background-position: 0 -80px, 10px -60px; }
+}
+
+@keyframes introEmbersTwinkle {
+  0%, 100% { opacity: 0.22; }
+  50% { opacity: 0.34; }
+}
+
+@keyframes introStreakShift {
+  0% { background-position: 0 0, 0 0; }
+  100% { background-position: 200px 120px, -180px 140px; }
+}
+
+@keyframes introDrip {
+  0% { background-position: 0 0, 0 0; }
+  100% { background-position: 0 120px, 0 180px; }
+}
+
+@keyframes introIrisPulse {
+  0%, 100% { transform: scale(1); filter: brightness(1); }
+  50% { transform: scale(1.06); filter: brightness(1.2); }
+}
+
+@keyframes introBlink {
+  0%, 92%, 100% { clip-path: inset(0 0 0 0); }
+  94% { clip-path: inset(45% 0 45% 0); }
+  96% { clip-path: inset(0 0 0 0); }
 }
