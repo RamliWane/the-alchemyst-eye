@@ -9,13 +9,15 @@ export default function Home() {
   return (
     <>
       <Intro />
-      <main>
+      <div className="app-grid-bg min-h-screen">
         <Navbar />
-        <Hero />
-        <Features />
-        <CTA />
+        <main className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14 space-y-16 sm:space-y-24">
+          <Hero />
+          <Features />
+          <CTA />
+        </main>
         <Footer />
-      </main>
+      </div>
     </>
   );
 }
