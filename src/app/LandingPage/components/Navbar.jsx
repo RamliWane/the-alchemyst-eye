@@ -1,6 +1,8 @@
 "use client";
 
 import { useState, useEffect } from 'react';
+import Link from "next/link";
+
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -64,12 +66,12 @@ export default function Navbar() {
           >
             Swot
           </a>
-          <a 
-            className="nav-link nav-link-blood font-medium" 
-            href="#developer"
+          <Link 
+            href="/developer"
+            className="nav-link nav-link-blood font-medium"
           >
             Developer
-          </a>
+          </Link>
         </nav>
 
         {/* Mobile Menu Button */}
@@ -128,13 +130,13 @@ export default function Navbar() {
           >
             Swot
           </a>
-          <a 
-            className="nav-link py-3 px-4 rounded-lg transition-all duration-200 font-medium hover:bg-white/5" 
-            href="#developer"
-            onClick={() => setIsMobileMenuOpen(false)}
+          {/* UBAH YANG INI - dari <a> jadi <Link> */}
+          <Link 
+            href="/developer"
+            className="nav-link nav-link-blood font-medium"
           >
             Developer
-          </a>
+          </Link>
         </nav>
       </div>  
     </header>
