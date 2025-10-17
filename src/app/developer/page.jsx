@@ -43,14 +43,12 @@ function TeamMember({ name, role, imageSeed, location, hobbies, github, linkedin
     >
       <div className="bg-zinc-900/80 backdrop-blur-sm rounded-xl p-5 border border-white/5 hover:border-white/10 transition-all duration-300">
         <div className="flex items-start gap-4">
-          {/* Avatar */}
           <div className="relative flex-shrink-0">
             <div className="w-35 h-34 rounded-lg overflow-hidden group-hover:border-white/20 transition-all">
               <img src="kotak.png" alt="" />
             </div>
           </div>
 
-          {/* Info */}
           <div className="flex-1 min-w-0">
             <h3 className="text-base font-bold text-white mb-0.5 truncate">{name}</h3>
             <p className="text-sm text-gray-400 mb-2 flex items-center gap-1">
@@ -62,7 +60,6 @@ function TeamMember({ name, role, imageSeed, location, hobbies, github, linkedin
               {location}
             </p>
 
-            {/* Social Links */}
             <div className="flex gap-2">
               <a 
                 href={github}
@@ -88,7 +85,6 @@ function TeamMember({ name, role, imageSeed, location, hobbies, github, linkedin
             </div>
           </div>
 
-          {/* Hobby Area - Hover to reveal */}
           <div 
             className="relative flex-shrink-0 w-20 h-full flex items-center justify-center"
             onMouseEnter={() => setShowHobbyTooltip(true)}
@@ -98,7 +94,6 @@ function TeamMember({ name, role, imageSeed, location, hobbies, github, linkedin
               <img className="w-6 h-6" src="goal.png" alt="" />
             </div>
 
-            {/* Hobby Tooltip with smooth animation */}
             <div 
               className={`absolute right-0 top-1/2 -translate-y-1/2 mr-14 z-50 w-48 p-3 bg-white text-black rounded-lg shadow-2xl transition-all duration-300 ease-out ${
                 showHobbyTooltip 

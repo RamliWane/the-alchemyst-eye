@@ -5,7 +5,7 @@ export default function Features() {
   const [showAll, setShowAll] = useState(false);
 
   return (
-    <section id="features" className="w-full py-16 sm:py-24">
+    <section id="features" className="w-full overflow-x-hidden py-16 sm:py-24">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <h2 className="text-2xl sm:text-3xl font-semibold tracking-tight text-center">
           Powerful features
