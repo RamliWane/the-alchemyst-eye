@@ -70,12 +70,11 @@ export default function Contact() {
         “The Eye listens to all who seek the truth behind the veil.  
         Leave your thoughts, your stories, or your unanswered questions below.”
       </p>
-=
+
       <form
         onSubmit={handleSubmit}
         className="max-w-4xl mx-auto bg-gradient-to-b from-neutral-950/70 to-black/60 border border-neutral-800/70 p-10 rounded-2xl shadow-inner backdrop-blur-sm text-left"
       >
-        {/* Dua kolom sejajar */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
           <div>
             <label className="block text-sm text-gray-500/80 mb-2">Your Name</label>
@@ -102,7 +101,6 @@ export default function Contact() {
           </div>
         </div>
 
-        {/* Pesan */}
         <div className="mb-8">
           <label className="block text-sm text-gray-500/80 mb-2">Message</label>
           <textarea
@@ -115,7 +113,6 @@ export default function Contact() {
           ></textarea>
         </div>
 
-        {/* Tombol */}
         <div className="flex justify-center">
           <button
             type="submit"
