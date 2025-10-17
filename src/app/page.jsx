@@ -4,7 +4,7 @@ import Features from "../LandingPage/components/Features";
 import CTA from "../LandingPage/components/CTA";
 import Footer from "../LandingPage/components/Footer";
 import Intro from "../LandingPage/components/Intro";
-
+import Contact from "../LandingPage/components/Contact";
 export default function Home() {
   return (
     <>
@@ -15,6 +15,7 @@ export default function Home() {
           <Hero />
           <Features />
           <CTA />
+          <Contact />
         </main>
         <Footer />
       </div>
