@@ -5,15 +5,13 @@ export default function Features() {
   const [showAll, setShowAll] = useState(false);
 
   return (
-    <section id="features" className="w-full py-16 sm:py-24">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+    <section id="features" className="w-full overflow-x-hidden py-16 sm:py-24">
+      <div className="mx-auto max-w-6xl px-4 lg:px-8">
         <h2 className="text-2xl sm:text-3xl font-semibold tracking-tight text-center">
           Powerful features
         </h2>
 
-        {/* Card grid */}
         <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {/* 3 card pertama selalu muncul */}
           <div className="rounded-lg border border-black/10 dark:border-white/10 p-6 transition-transform hover:scale-[1.02]">
             <img className="rounded-xl mb-5" src="kotak.png" alt="" />
             <h3 className="font-medium">Fast</h3>
@@ -38,7 +36,6 @@ export default function Features() {
             </p>
           </div>
 
-          {/* 3 card tambahan — disembunyikan kalau showAll = false */}
           {showAll && (
             <>
               <div className="rounded-lg border border-black/10 dark:border-white/10 p-6 transition-transform hover:scale-[1.02]">
@@ -68,7 +65,6 @@ export default function Features() {
           )}
         </div>
 
-        {/* Tombol toggle */}
         <div className="mt-8 flex justify-center">
           <button
             onClick={() => setShowAll(!showAll)}
