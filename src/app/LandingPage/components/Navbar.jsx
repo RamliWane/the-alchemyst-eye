@@ -1,36 +1,44 @@
 "use client";
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
-  const [lastScrollY, setLastScrollY] = useState(0);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const lastScrollYRef = useRef(0);
+  const tickingRef = useRef(false);
   const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-      
-      setIsScrolled(currentScrollY > 20);
-      
-      if (currentScrollY > lastScrollY && currentScrollY > 80) {
-        setIsVisible(false);
-        setIsMobileMenuOpen(false);
-      } 
-      else if (currentScrollY < lastScrollY) {
-        setIsVisible(true);
-      }
-      
-      setLastScrollY(currentScrollY);
+      const current = window.scrollY;
+      const last = lastScrollYRef.current;
+      if (tickingRef.current) return;
+      tickingRef.current = true;
+      requestAnimationFrame(() => {
+        // Update scrolled state only if changed
+        const nextScrolled = current > 20;
+        setIsScrolled(prev => (prev !== nextScrolled ? nextScrolled : prev));
+
+        // Show/hide based on direction
+        if (current > last && current > 80) {
+          setIsVisible(prev => (prev ? false : prev));
+          setIsMobileMenuOpen(false);
+        } else if (current < last) {
+          setIsVisible(prev => (!prev ? true : prev));
+        }
+
+        lastScrollYRef.current = current;
+        tickingRef.current = false;
+      });
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [lastScrollY]);
+  }, []);
 
   useEffect(() => {
     const onKeyDown = (e) => {
@@ -105,17 +113,17 @@ export default function Navbar() {
         {/* Mobile Menu Button */}
         <button
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          className="md:hidden p-2.5 hover:bg-white/10 rounded-lg transition-colors duration-200"
+          className={`md:hidden p-2.5 rounded-lg transition-colors duration-200 ${isMobileMenuOpen ? 'bg-white/15 ring-1 ring-white/70' : 'hover:bg-white/10'}`}
           aria-label="Toggle menu"
           aria-expanded={isMobileMenuOpen}
           aria-controls="mobile-menu"
         >
           {isMobileMenuOpen ? (
-            <svg className={`text-white transition-all duration-300 ${isScrolled ? 'w-5 h-5' : 'w-6 h-6'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+            <svg className="text-white transition-all duration-200 w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M6 18L18 6M6 6l12 12" />
             </svg>
           ) : (
-            <svg className={`text-white transition-all duration-300 ${isScrolled ? 'w-5 h-5' : 'w-6 h-6'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className={`text-white transition-all duration-200 ${isScrolled ? 'w-5 h-5' : 'w-6 h-6'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
             </svg>
           )}
@@ -138,18 +146,6 @@ export default function Navbar() {
         id="mobile-menu"
       >
         <nav className="flex flex-col px-6 py-5 gap-1">
-          <div className="flex items-center justify-between pb-3">
-            <Link href="/" className="text-base font-semibold tracking-wide" onClick={() => setIsMobileMenuOpen(false)}>
-              The Alchemyst Eye
-            </Link>
-            <button
-              onClick={() => setIsMobileMenuOpen(false)}
-              aria-label="Close menu"
-              className="p-2 rounded-lg hover:bg-white/10 transition-colors"
-            >
-              <svg className="w-5 h-5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"/></svg>
-            </button>
-          </div>
 
           <Link 
             href="/"
