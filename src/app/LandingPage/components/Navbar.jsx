@@ -46,26 +46,26 @@ export default function Navbar() {
         }`}>
           <a 
             className="nav-link nav-link-blood font-medium" 
-            href="#features"
+            href="/#features"
           >
             Features
           </a>
 
           <a 
             className="nav-link nav-link-blood font-medium" 
-            href="#contact"
+            href="/#contact"
           >
             Contact
           </a>
           
           <div className="w-px h-6 bg-white/15"></div>
           
-          <a 
-            className="nav-link nav-link-blood font-medium" 
-            href="#swot"
+          <Link 
+            href="/swot"
+            className="nav-link nav-link-blood font-medium"
           >
             Swot
-          </a>
+          </Link>
           <Link 
             href="/developer"
             className="nav-link nav-link-blood font-medium"
