@@ -12,7 +12,7 @@ export default function Features() {
         </h2>
 
         {/* Card grid */}
-        <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 -mx-10">
           {/* 3 card pertama selalu muncul */}
           <div className="rounded-lg border border-black/10 dark:border-white/10 p-6 transition-transform hover:scale-[1.02]">
             <img className="rounded-xl mb-5" src="kotak.png" alt="" />

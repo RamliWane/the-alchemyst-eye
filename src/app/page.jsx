@@ -10,7 +10,6 @@ export default function Home() {
     <>
       <Intro />
       <div className="app-grid-bg min-h-screen">
-        <Navbar />
         <main className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14 space-y-16 sm:space-y-24">
           <Hero />
           <Features />
